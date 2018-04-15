@@ -68,12 +68,12 @@ int main(int argc, char *argv[]) {
 	char buf[256];
 	char pbuf[256];
 	int start_argv = 1;
-	int quiet = 0;
+	int quiet = 0;//quiet mode
 	size_t i;
 	const char *prefix = NULL;
 
 	if(argc == 2 && !strcmp(argv[1], "--help"))
-		return usage(argv);
+		return usage(argv);//有两个参数并且参数1为--help时显示用法
 
 	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {
 		if(start_argv < argc && argv[start_argv][0] == '-') {
@@ -97,6 +97,7 @@ int main(int argc, char *argv[]) {
 		return usage(argv);
 
 	/* check if path of config file has not been passed via command line */
+	/*检查配置文件是否已经通过命令行配置好*/
 	path = get_config_path(path, pbuf, sizeof(pbuf));
 
 	if(!quiet)
