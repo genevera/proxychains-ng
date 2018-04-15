@@ -68,14 +68,14 @@ int main(int argc, char *argv[]) {
 	char buf[256];
 	char pbuf[256];
 	int start_argv = 1;
-	int quiet = 0;//quiet mode
+	int quiet = 1;//quiet mode
 	size_t i;
 	const char *prefix = NULL;
 
 	if(argc == 2 && !strcmp(argv[1], "--help"))
 		return usage(argv);//有两个参数并且参数1为--help时显示用法
 
-	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {
+	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {  //检查是否需要进入quiet模式
 		if(start_argv < argc && argv[start_argv][0] == '-') {
 			if(argv[start_argv][1] == 'q') {
 				quiet = 1;
