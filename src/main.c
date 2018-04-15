@@ -72,7 +72,7 @@ int main(int argc, char *argv[]) {
 	size_t i;
 	const char *prefix = NULL;
 
-	if(argc == 2 && !strcmp(argv[1], "--help"))
+	if(argc == 2 && (!strcmp(argv[1], "--help"))||((!strcmp(argv[1], "-h"))))
 		return usage(argv);//有两个参数并且参数1为--help时显示用法
 
 	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {  //检查是否需要进入quiet模式
