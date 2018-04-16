@@ -23,7 +23,7 @@
 
 static int usage(char **argv) {
 	printf("\nUsage:\t%s -q -f config_file program_name [arguments]\n"
-	       "\t-q makes proxychains quiet - this overrides the config setting\n"
+	       "\t-v makes proxychains Verbose - this overrides the config setting\n"
 	       "\t-f allows one to manually specify a configfile to use\n"
 	       "\tfor example : proxychains telnet somehost.com\n" "More help in README file\n\n", argv[0]);
 	return EXIT_FAILURE;
@@ -73,12 +73,12 @@ int main(int argc, char *argv[]) {
 	const char *prefix = NULL;
 
 	if(argc == 2 && (!strcmp(argv[1], "--help"))||((!strcmp(argv[1], "-h"))))
-		return usage(argv);//有两个参数并且参数1为--help时显示用法
+		return usage(argv);
 
-	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {  //检查是否需要进入quiet模式
+	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {  
 		if(start_argv < argc && argv[start_argv][0] == '-') {
-			if(argv[start_argv][1] == 'q') {
-				quiet = 1;
+			if(argv[start_argv][1] == 'v') {
+				quiet = 0;
 				start_argv++;
 			} else if(argv[start_argv][1] == 'f') {
 
@@ -97,7 +97,6 @@ int main(int argc, char *argv[]) {
 		return usage(argv);
 
 	/* check if path of config file has not been passed via command line */
-	/*检查配置文件是否已经通过命令行配置好*/
 	path = get_config_path(path, pbuf, sizeof(pbuf));
 
 	if(!quiet)
