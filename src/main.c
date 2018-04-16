@@ -23,7 +23,7 @@
 
 static int usage(char **argv) {
 	printf("\nUsage:\t%s -q -f config_file program_name [arguments]\n"
-	       "\t-q makes proxychains quiet - this overrides the config setting\n"
+	       "\t-v makes proxychains Verbose - this overrides the config setting\n"
 	       "\t-f allows one to manually specify a configfile to use\n"
 	       "\tfor example : proxychains telnet somehost.com\n" "More help in README file\n\n", argv[0]);
 	return EXIT_FAILURE;
@@ -73,12 +73,12 @@ int main(int argc, char *argv[]) {
 	const char *prefix = NULL;
 
 	if(argc == 2 && (!strcmp(argv[1], "--help"))||((!strcmp(argv[1], "-h"))))
-		return usage(argv);//�������������Ҳ���1Ϊ--helpʱ��ʾ�÷�
+		return usage(argv);//锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷锟揭诧拷锟斤拷1为--help时锟斤拷示锟矫凤拷
 
-	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {  //����Ƿ���Ҫ����quietģʽ
+	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {  //锟斤拷锟斤拷欠锟斤拷锟揭拷锟斤拷锟絨uiet模式
 		if(start_argv < argc && argv[start_argv][0] == '-') {
-			if(argv[start_argv][1] == 'q') {
-				quiet = 1;
+			if(argv[start_argv][1] == 'v') {
+				quiet = 0;
 				start_argv++;
 			} else if(argv[start_argv][1] == 'f') {
 
@@ -97,7 +97,7 @@ int main(int argc, char *argv[]) {
 		return usage(argv);
 
 	/* check if path of config file has not been passed via command line */
-	/*��������ļ��Ƿ��Ѿ�ͨ�����������ú�*/
+	/*锟斤拷锟斤拷锟斤拷锟斤拷募锟斤拷欠锟斤拷丫锟酵拷锟斤拷锟斤拷锟斤拷锟斤拷锟斤拷煤锟�*/
 	path = get_config_path(path, pbuf, sizeof(pbuf));
 
 	if(!quiet)
