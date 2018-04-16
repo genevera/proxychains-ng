@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
 	char buf[256];
 	char pbuf[256];
 	int start_argv = 1;
-	int quiet = 1;//quiet mode
+	int quiet = 1;//verbose mode
 	size_t i;
 	const char *prefix = NULL;
 
@@ -80,10 +80,10 @@ int main(int argc, char *argv[]) {
 
 	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {  
 		if(start_argv < argc && argv[start_argv][0] == '-') {
-			if(argv[start_argv][1] == 'v') {
+			if(argv[start_argv][1] == 'v') {//看是否需要进入verbose模式
 				quiet = 0;
 				start_argv++;
-			} else if(argv[start_argv][1] == 'f') {
+			} else if(argv[start_argv][1] == 'f') {//看是否需要使用自定义的配置文件
 
 				if(start_argv + 1 < argc)
 					path = argv[start_argv + 1];
