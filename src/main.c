@@ -78,13 +78,20 @@ int main(int argc, char *argv[]) {
 	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {
 		return usage(argv);
 
-	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {  
+	for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {
 		if(start_argv < argc && argv[start_argv][0] == '-') {
-			if(argv[start_argv][1] == 'v') {//看是否需要进入verbose模式
+			if(argv[start_argv][1] == 'v') {
+        /*
+         * trigger verbose mode
+         * 看是否需要进入verbose模式
+         */
 				quiet = 0;
 				start_argv++;
-			} else if(argv[start_argv][1] == 'f') {//看是否需要使用自定义的配置文件
-
+			} else if(argv[start_argv][1] == 'f') {
+        /*
+         * load custom config file
+         * 看是否需要使用自定义的配置文件
+         * */
 				if(start_argv + 1 < argc)
 					path = argv[start_argv + 1];
 				else
