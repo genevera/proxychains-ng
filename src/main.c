@@ -72,7 +72,12 @@ int main(int argc, char *argv[]) {
   size_t i;
   const char *prefix = NULL;
 
-  if(argc == 2 && (!strcmp(argv[1], "--help"))||((!strcmp(argv[1], "-h"))))
+  if(argc == 2 && (
+        (!strcmp(argv[1], "--help"))
+        ||
+        ((!strcmp(argv[1], "-h")))
+        )
+      )
     return usage(argv);
 
   for(i = 0; i < MAX_COMMANDLINE_FLAGS; i++) {
@@ -164,3 +169,4 @@ int main(int argc, char *argv[]) {
 
     return EXIT_FAILURE;
   }
+}
